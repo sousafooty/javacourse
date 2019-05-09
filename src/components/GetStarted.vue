@@ -1,5 +1,5 @@
 <template>
-  <div class="getstarted">
+  <div>
     <h1>Java Open Crash Course</h1>
     <h3>Learn how to code in Java</h3>
   </div>
