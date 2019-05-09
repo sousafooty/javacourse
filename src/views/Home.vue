@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img class="javalogo" alt="Java logo" src="../assets/logo.png">
     <GetStarted />
   </div>
 </template>
@@ -16,3 +16,11 @@ export default {
   }
 }
 </script>
+
+<style>
+
+.javalogo {
+  height: 200px;
+  width: 200px;
+}
+</style>
