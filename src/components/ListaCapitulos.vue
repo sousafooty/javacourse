@@ -5,9 +5,9 @@
       <h3>Get started!!</h3>
     </header>
     <section>
-      <ul class="list-group">
-        <li class="list-group-item" v-for="chapter in javaCrashCourse" v-bind:key="chapter.name">
-          <router-link to="/">{{ chapter.name }}</router-link>
+      <ul>
+        <li v-for="chapter in javaCrashCourse" v-bind:key="chapter.name">
+          <router-link v-bind:to="'/capitulo/' + chapter.name">{{ chapter.name }}</router-link>
         </li>
       </ul>
     </section>

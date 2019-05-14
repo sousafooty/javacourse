@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Documentation from './views/Documentation.vue'
+import Capitulo from './views/Capitulo.vue'
 import Course from './views/Course.vue'
 
 Vue.use(Router)
@@ -24,6 +25,12 @@ export default new Router({
       path: '/course',
       name: 'course',
       component: Course
+    },
+    {
+      path: '/capitulo/:chapter',
+      name: 'capitulo',
+      component: Capitulo,
+      props: true
     },
     {
       path: '/help',
