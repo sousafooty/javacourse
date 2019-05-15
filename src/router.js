@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Documentation from './views/Documentation.vue'
-import Capitulo from './views/Capitulo.vue'
+import Capitulo from './views/Capitulos.vue'
 import Course from './views/Course.vue'
 
 Vue.use(Router)
