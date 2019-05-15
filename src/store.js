@@ -29,7 +29,7 @@ export default new Vuex.Store({
     getCourse ({ state, commit }) {
       fetch(this.state.urlApiJava, this.state.init)
         .then(course => course.json())
-        .then(courseJson => commit('setCrashCourse', courseJson))
+        .then(courseJson => commit('setCrashCourse', courseJson[0].tutorials))
         .catch(error => alert(error))
     }
   },

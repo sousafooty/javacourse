@@ -6,7 +6,7 @@
     </header>
     <section>
       <ul>
-        <li v-for="chapter in javaCrashCourse" v-bind:key="chapter.name">
+        <li v-for="chapter in getJavaCrashCourse" v-bind:key="chapter.name">
           <router-link v-bind:to="'/capitulo/' + chapter.name">{{ chapter.name }}</router-link>
         </li>
       </ul>
@@ -18,49 +18,13 @@
 <script>
 export default {
   name: 'ListaCapitulos',
-  data () {
-    return {
-      /**
-       * La url para hacer la petición del Json
-       */
-      urlApiJava: 'http://localhost:3000/josecoding',
-      /**
-       * La cabecera del fetch
-       */
-      init: {
-        method: 'GET'
-      },
-      /**
-       * La variable que contendrá el json de los tutoriales
-       */
-      javaCrashCourse: []
-    }
-  },
-  methods: {
-    /**
-     * Metodo que ejectura el fetch
-     */
-    getJavaInfo () {
-      fetch(this.urlApiJava, this.init)
-        .then(javaResult => {
-          if (!javaResult.ok) {
-            throw new Error('HTTP error, status: ' + javaResult.status)
-          } else {
-            return javaResult.json()
-          }
-        })
-        /**
-         * Rescatamos la informacion del array con el Json
-         */
-        .then(JavaresultJson => {
-          this.javaCrashCourse = JavaresultJson[0].tutorials
-          return true
-        })
-        .catch(error => alert(error))
+  computed: {
+    getJavaCrashCourse () {
+      return this.$store.getters.getJavaCrashCourse
     }
   },
   created () {
-    this.getJavaInfo()
+    this.$store.dispatch('getCourse')
   }
 }
 </script>

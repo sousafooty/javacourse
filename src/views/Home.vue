@@ -13,20 +13,11 @@ export default {
   name: 'getstarted',
   components: {
     GetStarted
-  },
-  computed: {
-    getJavaCrashCourse () {
-      return this.$store.getters.getJavaCrashCourse
-    }
-  },
-  created () {
-    this.$store.dispatch('getCourse')
   }
 }
 </script>
 
 <style>
-
 .javalogo {
   height: 200px;
   width: 200px;
