@@ -13,6 +13,14 @@ export default {
   name: 'getstarted',
   components: {
     GetStarted
+  },
+  computed: {
+    getJavaCrashCourse () {
+      return this.$store.getters.getJavaCrashCourse
+    }
+  },
+  created () {
+    this.$store.dispatch('getCourse')
   }
 }
 </script>
