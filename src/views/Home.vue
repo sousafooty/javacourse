@@ -13,6 +13,9 @@ export default {
   name: 'getstarted',
   components: {
     GetStarted
+  },
+  created () {
+    this.$store.dispatch('getCourse')
   }
 }
 </script>

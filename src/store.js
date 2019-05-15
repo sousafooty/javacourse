@@ -18,18 +18,38 @@ export default new Vuex.Store({
     /**
      * La variable que contendrá el json de los tutoriales
      */
-    javaCrashCourse: []
+    javaCrashCourse: [],
+    /**
+     * La variable que contendrá el json de librerias externas
+     * más utilizadas
+     */
+    javaMostWantedLibraries: [],
+    /**
+     * La variable que contendrá el json de librerias estandard
+     * de Java más utilizadas.
+     */
+    javaMostUsedStandardLibraries: []
   },
   mutations: {
     setCrashCourse (state, payload) {
       state.javaCrashCourse = payload
+    },
+    setExternalLibraries (state, payload) {
+      state.javaMostWantedLibraries = payload
+    },
+    setStandardLibraries (state, payload) {
+      state.javaMostUsedStandardLibraries = payload
     }
   },
   actions: {
     getCourse ({ state, commit }) {
       fetch(this.state.urlApiJava, this.state.init)
         .then(course => course.json())
-        .then(courseJson => commit('setCrashCourse', courseJson[0].tutorials))
+        .then(courseJson => {
+          commit('setCrashCourse', courseJson[0].tutorials)
+          commit('setExternalLibraries', courseJson[0].externallibraries.mostFamous)
+          commit('setStandardLibraries', courseJson[0].standardlibraries.mostUsed)
+        })
         .catch(error => alert(error))
     }
   },

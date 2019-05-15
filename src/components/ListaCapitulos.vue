@@ -22,9 +22,6 @@ export default {
     getJavaCrashCourse () {
       return this.$store.getters.getJavaCrashCourse
     }
-  },
-  created () {
-    this.$store.dispatch('getCourse')
   }
 }
 </script>
