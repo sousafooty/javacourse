@@ -13,6 +13,14 @@ export default {
   props: ['chapter'],
   components: {
     Capitulo
+  },
+  methods: {
+    test: function () {
+      console.log(this.chapter)
+    }
+  },
+  created () {
+    this.test()
   }
 }
 </script>
