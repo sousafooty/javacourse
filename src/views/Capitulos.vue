@@ -1,7 +1,15 @@
 <template>
   <div>
-    <h1>Welcome to the chapter!</h1>
-    <h3>{{ chapter }}</h3>
+    <hgroup>
+      <h1>Welcome to the chapter!</h1>
+      <h2>{{ chapter }}</h2>
+      <h3>{{ javaCourse.capitulo }}</h3>
+    </hgroup>
+    <ul>
+      <li v-for="(chapter, index) in javaCourse.subCapitulo" v-bind:key="index">
+        {{ chapter }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -24,7 +32,7 @@ export default {
       let capFinded = false
       let lengthJavaCourse = this.javaCourseContent.length
 
-      for (let i = 0; i < lengthJavaCourse && capFinded === false; i++) {
+      for (let i = 0; i < lengthJavaCourse && !capFinded; i++) {
         const course = this.javaCourseContent[i]
 
         if (course.name === this.chapter) {
