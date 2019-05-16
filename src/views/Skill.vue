@@ -1,10 +1,12 @@
 <template>
   <div>
     <h1>Learn a new Skill in Java!</h1>
+    <h2>{{ subchapter }}</h2>
     <section>
       <p v-for="(paragraph, index) in skill" v-bind:key="index">
         {{ paragraph }}
       </p>
+      <!-- <p>{{ skill }}</p> -->
     </section>
   </div>
 </template>
@@ -34,6 +36,7 @@ export default {
           }
         }
       }
+      // this.skill = this.skill.toString()
     },
     getJavaCrashCourse () {
       this.javaCourseContent = this.$store.getters.getJavaCrashCourse
