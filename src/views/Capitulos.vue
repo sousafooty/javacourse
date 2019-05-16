@@ -5,11 +5,14 @@
       <h2>{{ chapter }}</h2>
       <h3>{{ javaCourse.capitulo }}</h3>
     </hgroup>
-    <ul>
-      <li v-for="(chapter, index) in javaCourse.subCapitulo" v-bind:key="index">
-        {{ chapter }}
-      </li>
-    </ul>
+    <section>
+      <ul>
+        <li v-for="(chapter, index) in javaCourse.subCapitulo" v-bind:key="index">
+          <router-link v-bind:to="'/skill/' + chapter">{{ chapter }}</router-link>
+        </li>
+      </ul>
+    </section>
+    <router-view></router-view>
   </div>
 </template>
 

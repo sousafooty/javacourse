@@ -33,6 +33,13 @@ export default new Router({
       props: true
     },
     {
+      path: '/skill/:subchapter',
+      name: 'skill',
+      props: true,
+      component: () => import(/* webpackChunkName: "skill" */ './views/Skill.vue')
+
+    },
+    {
       path: '/help',
       name: 'help',
       // route level code-splitting
