@@ -54,14 +54,14 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getUrlApiJava (state) {
-      return state.javaCrashCourse
-    },
-    getInit (state) {
-      return state.init
-    },
     getJavaCrashCourse (state) {
       return state.javaCrashCourse
+    },
+    getStandardLibraries (state) {
+      return state.javaMostUsedStandardLibraries
+    },
+    getExternalLibraries (state) {
+      return state.javaMostWantedLibraries
     }
   }
 })
