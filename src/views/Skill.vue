@@ -3,7 +3,7 @@
     <h1>Learn a new Skill in Java!</h1>
     <section>
       <p v-for="(paragraph, index) in skill" v-bind:key="index">
-        <span>{{ paragraph }}</span>
+        {{ paragraph }}
       </p>
     </section>
   </div>
@@ -22,10 +22,10 @@ export default {
     findTheSkill () {
       let skillFounded = false
 
-      for (let i = 0; i < this.javaCourseContent.length && skillFounded === false; i++) {
+      for (let i = 0; i < this.javaCourseContent.length && !skillFounded; i++) {
         const course = this.javaCourseContent[i]
 
-        for (let j = 0; j < course.content.length && skillFounded === false; j++) {
+        for (let j = 0; j < course.content.length && !skillFounded; j++) {
           const subCap = course.content[j]
 
           if (subCap.name === this.subchapter) {
@@ -34,7 +34,6 @@ export default {
           }
         }
       }
-      console.log(this.skill)
     },
     getJavaCrashCourse () {
       this.javaCourseContent = this.$store.getters.getJavaCrashCourse
