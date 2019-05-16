@@ -1,19 +1,13 @@
 <template>
   <div>
-    <h1>Welcome to the chapter!!!</h1>
-    <Capitulo></Capitulo>
+    <h1>Welcome to the chapter!</h1>
   </div>
 </template>
 
 <script>
 
-import Capitulo from '@/components/Capitulo.vue'
-
 export default {
   props: ['chapter'],
-  components: {
-    Capitulo
-  },
   methods: {
     test: function () {
       console.log(this.chapter)
