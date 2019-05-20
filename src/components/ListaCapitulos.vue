@@ -8,6 +8,7 @@
       <ul>
         <li v-for="chapter in getJavaCrashCourse" v-bind:key="chapter.name">
           <router-link v-bind:to="'/capitulo/' + chapter.name">{{ chapter.name }}</router-link>
+          <input type="checkbox" id="learned">
         </li>
       </ul>
     </section>
@@ -26,5 +27,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 </style>

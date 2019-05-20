@@ -9,6 +9,7 @@
       <ul>
         <li v-for="(chapter, index) in javaCourse.subCapitulo" v-bind:key="index">
           <router-link v-bind:to="'/skill/' + chapter">{{ chapter }}</router-link>
+          <input type="checkbox" id="skilled">
         </li>
       </ul>
     </section>
