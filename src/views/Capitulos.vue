@@ -24,13 +24,13 @@ export default {
   data () {
     return {
       javaCourse: [],
-      javaCourseContent: Array
+      javaCourseContent: []
     }
   },
   methods: {
     recorrerCrashCourse () {
       let bufferCourse = {
-        capitulo: String,
+        capitulo: '',
         subCapitulo: []
       }
       let capFinded = false
