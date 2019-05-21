@@ -27,13 +27,13 @@ export default {
     }
   },
   methods: {
-    recorrerCrashCourse () {
+    async recorrerCrashCourse () {
       let bufferCourse = {
         capitulo: '',
         subCapitulo: []
       }
       let capFinded = false
-      let lengthJavaCourse = this.getJavaCourseContent.length
+      let lengthJavaCourse = await this.getJavaCourseContent.length
       console.log('holi antes del for' + 'tamaño del array de java course: ' + lengthJavaCourse)
 
       for (let i = 0; i < lengthJavaCourse && !capFinded; i++) {
