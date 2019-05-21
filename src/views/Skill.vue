@@ -3,10 +3,9 @@
     <h1>Learn a new Skill in Java!</h1>
     <h2>{{ subchapter }}</h2>
     <section>
-      <p v-for="(paragraph, index) in skill" v-bind:key="index">
+      <p v-for="(paragraph, index) in getFindTheSkill" v-bind:key="index">
         {{ paragraph }}
       </p>
-      <!-- <p>{{ skill }}</p> -->
     </section>
   </div>
 </template>
@@ -20,31 +19,28 @@ export default {
       javaCourseContent: Array
     }
   },
-  methods: {
-    findTheSkill () {
+  computed: {
+    getJavaCrashCourse () {
+      return this.$store.getters.getJavaCrashCourse
+    },
+    getFindTheSkill () {
       let skillFounded = false
+      let skill = []
 
-      for (let i = 0; i < this.javaCourseContent.length && !skillFounded; i++) {
-        const course = this.javaCourseContent[i]
+      for (let i = 0; i < this.getJavaCrashCourse.length && !skillFounded; i++) {
+        const course = this.getJavaCrashCourse[i]
 
         for (let j = 0; j < course.content.length && !skillFounded; j++) {
           const subCap = course.content[j]
 
           if (subCap.name === this.subchapter) {
-            this.skill = subCap.book
+            skill = subCap.book
             skillFounded = true
           }
         }
       }
-      // this.skill = this.skill.toString()
-    },
-    getJavaCrashCourse () {
-      this.javaCourseContent = this.$store.getters.getJavaCrashCourse
+      return skill
     }
-  },
-  created () {
-    this.getJavaCrashCourse()
-    this.findTheSkill()
   }
 }
 </script>
