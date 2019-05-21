@@ -13,12 +13,6 @@
 <script>
 export default {
   props: ['subchapter'],
-  data () {
-    return {
-      skill: [],
-      javaCourseContent: Array
-    }
-  },
   computed: {
     getJavaCrashCourse () {
       return this.$store.getters.getJavaCrashCourse
