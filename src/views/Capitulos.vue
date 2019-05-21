@@ -23,8 +23,8 @@ export default {
   props: ['chapter'],
   data () {
     return {
-      javaCourse: [],
-      javaCourseContent: []
+      javaCourse: []
+      // javaCourseContent: []
     }
   },
   methods: {
@@ -34,10 +34,12 @@ export default {
         subCapitulo: []
       }
       let capFinded = false
-      let lengthJavaCourse = this.javaCourseContent.length
+      let lengthJavaCourse = this.getJavaCourseContent.length
+      console.log('holi antes del for' + 'tamaño del array de java course: ' + lengthJavaCourse)
 
       for (let i = 0; i < lengthJavaCourse && !capFinded; i++) {
-        const course = this.javaCourseContent[i]
+        const course = this.getJavaCourseContent[i]
+        console.log('holi en el for')
 
         if (course.name === this.chapter) {
           bufferCourse.capitulo = course.description
@@ -48,13 +50,19 @@ export default {
         }
       }
       this.javaCourse = bufferCourse
-    },
-    getJavaCrashCourse () {
-      this.javaCourseContent = this.$store.getters.getJavaCrashCourse
+      console.log('holi antes del for' + 'tamaño del array de java course: ' + lengthJavaCourse)
+    }
+    // getJavaCrashCourse () {
+    //   this.javaCourseContent = this.$store.getters.getJavaCrashCourse
+    // }
+  },
+  computed: {
+    getJavaCourseContent () {
+      return this.$store.getters.getJavaCrashCourse
     }
   },
-  created () {
-    this.getJavaCrashCourse()
+  mounted () {
+    // this.getJavaCrashCourse()
     this.recorrerCrashCourse()
   }
 }
