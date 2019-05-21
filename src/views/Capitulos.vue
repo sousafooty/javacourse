@@ -3,11 +3,11 @@
     <hgroup>
       <h1>Welcome to the chapter!</h1>
       <h2>{{ chapter }}</h2>
-      <h3>{{ javaCourse.capitulo }}</h3>
+      <h3>{{ bufferCourse.capitulo }}</h3>
     </hgroup>
     <section>
       <ul>
-        <li v-for="(chapter, index) in javaCourse.subCapitulo" v-bind:key="index">
+        <li v-for="(chapter, index) in bufferCourse.subCapitulo" v-bind:key="index">
           <router-link v-bind:to="'/skill/' + chapter">{{ chapter }}</router-link>
           <input type="checkbox" id="skilled">
         </li>
@@ -18,27 +18,22 @@
 </template>
 
 <script>
-
 export default {
   props: ['chapter'],
-  data () {
-    return {
-      javaCourse: []
-    }
-  },
-  methods: {
-    async recorrerCrashCourse () {
+  computed: {
+    getJavaCourseContent () {
+      return this.$store.getters.getJavaCrashCourse
+    },
+    bufferCourse () {
       let bufferCourse = {
         capitulo: '',
         subCapitulo: []
       }
       let capFinded = false
-      let lengthJavaCourse = await this.getJavaCourseContent.length
-      console.log('holi antes del for' + 'tamaño del array de java course: ' + lengthJavaCourse)
+      const lengthJavaCourse = this.getJavaCourseContent.length
 
       for (let i = 0; i < lengthJavaCourse && !capFinded; i++) {
         const course = this.getJavaCourseContent[i]
-        console.log('holi en el for')
 
         if (course.name === this.chapter) {
           bufferCourse.capitulo = course.description
@@ -48,18 +43,7 @@ export default {
           capFinded = true
         }
       }
-      this.javaCourse = bufferCourse
-      console.log('holi antes del for' + 'tamaño del array de java course: ' + lengthJavaCourse)
-    }
-  },
-  computed: {
-    getJavaCourseContent () {
-      return this.$store.getters.getJavaCrashCourse
-    }
-  },
-  created () {
-    if (this.javaCourse.length === 0) {
-      this.recorrerCrashCourse()
+      return bufferCourse
     }
   }
 }
