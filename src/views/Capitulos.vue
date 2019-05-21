@@ -24,7 +24,6 @@ export default {
   data () {
     return {
       javaCourse: []
-      // javaCourseContent: []
     }
   },
   methods: {
@@ -52,17 +51,14 @@ export default {
       this.javaCourse = bufferCourse
       console.log('holi antes del for' + 'tamaño del array de java course: ' + lengthJavaCourse)
     }
-    // getJavaCrashCourse () {
-    //   this.javaCourseContent = this.$store.getters.getJavaCrashCourse
-    // }
   },
   computed: {
     getJavaCourseContent () {
       return this.$store.getters.getJavaCrashCourse
     }
   },
-  mounted () {
-    // this.getJavaCrashCourse()
+  created () {
+    console.log(this.getJavaCourseContent)
     this.recorrerCrashCourse()
   }
 }
