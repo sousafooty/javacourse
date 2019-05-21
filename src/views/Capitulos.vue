@@ -58,8 +58,9 @@ export default {
     }
   },
   created () {
-    console.log(this.getJavaCourseContent)
-    this.recorrerCrashCourse()
+    if (this.javaCourse.length === 0) {
+      this.recorrerCrashCourse()
+    }
   }
 }
 </script>
