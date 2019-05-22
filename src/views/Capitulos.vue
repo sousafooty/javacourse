@@ -8,7 +8,7 @@
     <section>
       <ul>
         <li v-for="(chapter, index) in bufferCourse.subCapitulo" v-bind:key="index">
-          <router-link v-bind:to="'/skill/' + chapter">{{ chapter }}</router-link>
+          <router-link v-bind:to="'/skill/' + chapter" v-show="!isSkillDoned(chapter)">{{ chapter }}</router-link>
           <input type="checkbox" v-bind:value="chapter" v-model="setChapter">
         </li>
       </ul>
@@ -23,6 +23,17 @@ export default {
   data () {
     return {
       chapterSkilled: []
+    }
+  },
+  methods: {
+    isSkillDoned (chapter) {
+      let skillDominated = false
+      let skill = this.chapterSkilled
+
+      if (skill.indexOf(chapter) !== -1) {
+        skillDominated = true
+      }
+      return skillDominated
     }
   },
   computed: {
@@ -57,19 +68,6 @@ export default {
       get: function getSkill () {
         return this.chapterSkilled
       }
-    },
-    skillVisible () {
-      let skillFinded = false
-      let buffercourse = this.setChapter
-
-      for (let i = 0; i < this.chapterSkilled.length && !skillFinded; i++) {
-        const skill = this.chapterSkilled[i]
-
-        if (buffercourse.indexOf(skill) !== -1) {
-          skillFinded = true
-        }
-      }
-      return skillFinded
     }
   }
 }
