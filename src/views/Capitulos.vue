@@ -8,8 +8,8 @@
     <section>
       <ul>
         <li v-for="(chapter, index) in bufferCourse.subCapitulo" v-bind:key="index">
-          <router-link v-bind:to="'/skill/' + chapter" v-show="chapter != chapterSkilled[index]">{{ chapter }}</router-link>
-          <input type="checkbox" v-bind:id="'skilled' + index" v-on:change="skilled(chapter, index)">
+          <router-link v-bind:to="'/skill/' + chapter">{{ chapter }}</router-link>
+          <input type="checkbox" v-bind:value="chapter" v-model="setChapter">
         </li>
       </ul>
     </section>
@@ -23,16 +23,6 @@ export default {
   data () {
     return {
       chapterSkilled: []
-    }
-  },
-  methods: {
-    skilled (chapter, index) {
-      let id = 'skilled' + index
-      let checkboxCheck = document.getElementById(id)
-      if (checkboxCheck.checked === true) {
-        this.chapterSkilled.push(chapter)
-      }
-      console.log('onchange')
     }
   },
   computed: {
@@ -59,6 +49,14 @@ export default {
         }
       }
       return bufferCourse
+    },
+    setChapter: {
+      set: function setSkill (chapter) {
+        this.chapterSkilled = chapter
+      },
+      get: function getSkill () {
+        return this.chapterSkilled
+      }
     }
   }
 }
