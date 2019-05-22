@@ -43,7 +43,7 @@ export default new Vuex.Store({
   },
   actions: {
     async getCourse ({ state, commit }) {
-      await fetch(this.state.urlApiJava, this.state.init)
+      await fetch(state.urlApiJava, state.init)
         .then(course => course.json())
         .then(courseJson => {
           commit('setCrashCourse', courseJson[0].tutorials)
