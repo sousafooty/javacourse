@@ -57,6 +57,19 @@ export default {
       get: function getSkill () {
         return this.chapterSkilled
       }
+    },
+    skillVisible () {
+      let skillFinded = false
+      let buffercourse = this.setChapter
+
+      for (let i = 0; i < this.chapterSkilled.length && !skillFinded; i++) {
+        const skill = this.chapterSkilled[i]
+
+        if (buffercourse.indexOf(skill) !== -1) {
+          skillFinded = true
+        }
+      }
+      return skillFinded
     }
   }
 }
