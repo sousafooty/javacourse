@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
-      <b-navbar-brand to="/">Java Course</b-navbar-brand>
+      <b-navbar-brand to="/">
+      <img id="javaBrand" class="d-inline-block align-top" src="@/assets/javaBrand.png" alt="logo Java">
+      Java Course
+      </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-container>
         <b-collapse id="nav-collapse" is-nav>
@@ -14,12 +17,7 @@
         </b-collapse>
       </b-container>
     </b-navbar>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/Documentation">Documentation</router-link> |
-      <router-link to="/Course">Course</router-link> |
-      <router-link to="/help">Help</router-link>
-    </div> -->
+
     <router-view/>
   </div>
 </template>
@@ -39,7 +37,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 5%;
+  margin-top: 13%;
 }
 #nav {
   padding: 30px;
@@ -53,5 +51,9 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+img#javaBrand {
+  width: 30px;
 }
 </style>
