@@ -9,7 +9,7 @@
       <b-link v-bind:to="'/skill/' + chapter" router-tag="a" v-show="!isSkillDoned(chapter)">
         {{ chapter }}
       </b-link>
-      <span><input type="checkbox" class="mx-auto bg-info" v-bind:id="index" v-bind:value="chapter" v-model="setChapter"></span>
+      <input type="checkbox" class="mx-auto bg-info" v-bind:id="index" v-bind:value="chapter" v-model="setChapter">
       <label v-bind:for="index" v-show="isSkillDoned(chapter)">Readed!</label>
     </b-container>
     <!-- <section>
