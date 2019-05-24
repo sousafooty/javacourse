@@ -5,7 +5,14 @@
       <h2>{{ chapter }}</h2>
       <h3>{{ bufferCourse.capitulo }}</h3>
     </hgroup>
-    <section>
+    <b-container v-for="(chapter, index) in bufferCourse.subCapitulo" v-bind:key="index">
+      <b-link v-bind:to="'/skill/' + chapter" router-tag="a" v-show="!isSkillDoned(chapter)">
+        {{ chapter }}
+      </b-link>
+      <span><input type="checkbox" class="mx-auto bg-info" v-bind:id="index" v-bind:value="chapter" v-model="setChapter"></span>
+      <label v-bind:for="index" v-show="isSkillDoned(chapter)">Readed!</label>
+    </b-container>
+    <!-- <section>
       <ul>
         <li v-for="(chapter, index) in bufferCourse.subCapitulo" v-bind:key="index">
           <router-link v-bind:to="'/skill/' + chapter" v-show="!isSkillDoned(chapter)">{{ chapter }}</router-link>
@@ -13,7 +20,7 @@
           <label v-bind:for="index" v-show="isSkillDoned(chapter)">Readed!</label>
         </li>
       </ul>
-    </section>
+    </section> -->
     <router-view></router-view>
   </div>
 </template>
@@ -73,7 +80,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

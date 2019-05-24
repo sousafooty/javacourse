@@ -4,13 +4,13 @@
       <h1>Course</h1>
       <h3>Get started!!</h3>
     </header>
-    <section>
-      <ul>
-        <li v-for="chapter in getJavaCrashCourse" v-bind:key="chapter.name">
-          <router-link v-bind:to="'/capitulo/' + chapter.name">{{ chapter.name }}</router-link>
-        </li>
-      </ul>
-    </section>
+    <b-container>
+      <b-list-group>
+        <b-list-group-item v-for="chapter in getJavaCrashCourse" v-bind:key="chapter.name" v-bind:to="'/capitulo/' + chapter.name">
+          {{ chapter.name }}
+        </b-list-group-item>
+      </b-list-group>
+    </b-container>
     <router-view></router-view>
   </div>
 </template>
