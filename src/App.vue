@@ -63,7 +63,6 @@ h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  /* color: #2c3e50; */
   margin-top: 13%;
   background-color: rgb(252, 252, 252);
 }
