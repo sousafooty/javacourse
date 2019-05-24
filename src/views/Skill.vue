@@ -3,7 +3,7 @@
     <h1>Learn a new Skill in Java!</h1>
     <h2>{{ subchapter }}</h2>
     <section>
-      <p v-for="(paragraph, index) in getFindTheSkill" v-bind:key="index">
+      <p class="paragraph" v-for="(paragraph, index) in getFindTheSkill" v-bind:key="index">
         {{ paragraph }}
       </p>
     </section>
@@ -38,3 +38,13 @@ export default {
   }
 }
 </script>
+
+<style>
+p.paragraph {
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+ font-size: 18px;
+ line-height: 20px;
+ text-transform: uppercase, full-width;
+ color: black;
+}
+</style>

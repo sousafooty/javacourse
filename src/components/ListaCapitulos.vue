@@ -2,7 +2,7 @@
   <div>
     <header>
       <h1>Course</h1>
-      <h3>Get started!!</h3>
+      <h2>Get started!!</h2>
     </header>
     <b-container>
       <b-list-group>
