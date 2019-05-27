@@ -8,7 +8,7 @@ export default new Vuex.Store({
     /**
        * La url para hacer la petición del Json
        */
-    urlApiJava: 'http://localhost:3000/josecoding',
+    urlApiJava: 'https://api.myjson.com/bins/llxe8',
     /**
        * La cabecera del fetch
        */
@@ -46,9 +46,9 @@ export default new Vuex.Store({
       await fetch(state.urlApiJava, state.init)
         .then(course => course.json())
         .then(courseJson => {
-          commit('setCrashCourse', courseJson[0].tutorials)
-          commit('setExternalLibraries', courseJson[0].externallibraries.mostFamous)
-          commit('setStandardLibraries', courseJson[0].standardlibraries.mostUsed)
+          commit('setCrashCourse', courseJson.josecoding[0].tutorials)
+          commit('setExternalLibraries', courseJson.josecoding[0].externallibraries.mostFamous)
+          commit('setStandardLibraries', courseJson.josecoding[0].standardlibraries.mostUsed)
         })
         .catch(error => alert(error))
     }
