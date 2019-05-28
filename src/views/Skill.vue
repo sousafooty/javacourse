@@ -1,12 +1,14 @@
 <template>
   <div>
-    <h1>Learn a new Skill in Java!</h1>
-    <h2>{{ subchapter }}</h2>
-    <section>
-      <p class="paragraph" v-for="(paragraph, index) in getFindTheSkill" v-bind:key="index">
-        {{ paragraph }}
-      </p>
-    </section>
+    <b-container>
+      <h1>Learn a new Skill in Java!</h1>
+      <h2>{{ subchapter }}</h2>
+      <section>
+        <p class="paragraph" v-for="(paragraph, index) in getFindTheSkill" v-bind:key="index">
+          {{ paragraph }}
+        </p>
+      </section>
+    </b-container>
   </div>
 </template>
 

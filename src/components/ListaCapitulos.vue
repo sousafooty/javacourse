@@ -1,10 +1,10 @@
 <template>
   <div>
-    <header>
-      <h1>Course</h1>
-      <h2>Get started!!</h2>
-    </header>
     <b-container>
+      <header>
+        <h1>Course</h1>
+        <h2>Get started!!</h2>
+      </header>
       <b-list-group>
         <b-list-group-item v-for="chapter in getJavaCrashCourse" v-bind:key="chapter.name" v-bind:to="'/capitulo/' + chapter.name">
           {{ chapter.name }}
