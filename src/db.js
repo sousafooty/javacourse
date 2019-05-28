@@ -5,6 +5,6 @@ Vue.use(rtdbPlugin)
 
 // Get a RTDB instance
 // eslint-disable-next-line no-undef
-export const db = firebase
-  .initializeApp({ databaseURL: 'MY PROJECT URL' })
-  .database()
+// export const db = firebase
+//   .initializeApp({ databaseURL: 'MY PROJECT URL' })
+//   .database()

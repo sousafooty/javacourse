@@ -23,17 +23,8 @@
 </template>
 
 <script>
-import { db } from './db'
 
 export default {
-  data () {
-    return {
-      documents: []
-    }
-  },
-  firebase: {
-    documents: db.ref('documents')
-  },
   created () {
     this.$store.dispatch('getCourse')
   }
