@@ -15,6 +15,11 @@
 
 <script>
 export default {
-  name: 'GetStarted'
+  name: 'GetStarted',
+  methods: {
+    addBookMark: function () {
+      console.log('add bookmark')
+    }
+  }
 }
 </script>
