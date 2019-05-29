@@ -23,7 +23,6 @@ export default {
     addUser: function () {
       console.log('logeandose...')
       let provider = new firebase.auth.GoogleAuthProvider()
-
       firebase.auth().signInWithPopup(provider).then(() => console.log(firebase.auth()))
     }
   }
