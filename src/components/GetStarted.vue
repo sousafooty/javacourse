@@ -15,18 +15,16 @@
 </template>
 
 <script>
-import { db } from '@/firebase'
-
-let userRef = db.ref('user')
+import firebase from 'firebase'
 
 export default {
   name: 'GetStarted',
-  firebase: {
-    user: userRef
-  },
   methods: {
     addUser: function () {
-      userRef.push('new user')
+      console.log('logeandose...')
+      let provider = new firebase.auth.GoogleAuthProvider()
+
+      firebase.auth().signInWithPopup(provider).then(() => console.log(firebase.auth()))
     }
   }
 }
