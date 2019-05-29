@@ -6,7 +6,7 @@
     </b-container>
     <b-container>
       <!--Boton de loguin-->
-      <b-button pill variant="outline-secondary" v-on:click="addBookMark">
+      <b-button pill variant="outline-secondary" v-on:click="addUser">
         Google Account
         <b-badge variant="dark">Get in</b-badge>
       </b-button>
@@ -17,26 +17,16 @@
 <script>
 import { db } from '@/firebase'
 
+let userRef = db.ref('user')
+
 export default {
   name: 'GetStarted',
-  data () {
-    return {
-      users: {}
-    }
+  firebase: {
+    user: userRef
   },
   methods: {
-    addBookMark: function () {
-      console.log('add bookmark')
-    }
-  },
-
-  firebase: {
-    users: {
-      source: db.ref('users'),
-      // handle errors
-      cancelCallback (err) {
-        console.error(err)
-      }
+    addUser: function () {
+      userRef.push('new user')
     }
   }
 }
