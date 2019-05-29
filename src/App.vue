@@ -27,6 +27,11 @@
 export default {
   created () {
     this.$store.dispatch('getCourse')
+  },
+  methods: {
+    addBookMark: function () {
+      console.log('add bookmark')
+    }
   }
 }
 </script>
