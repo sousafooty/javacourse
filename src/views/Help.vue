@@ -5,6 +5,7 @@
         <header>
           <h1>Are you lost?</h1>
           <h2>You think this isn't for you?</h2>
+          <h3>All problems have solutions</h3>
         </header>
         <Minichat></Minichat>
       </b-row>
