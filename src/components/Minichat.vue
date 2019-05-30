@@ -28,6 +28,18 @@
         <b-button variant="dark" v-on:click="sendMessage">Send</b-button>
       </b-col>
     </b-row>
+    <b-row align-h="center">
+      <b-col sm="2">
+        <span>You have to log in to use the chat</span>
+      </b-col>
+      <!--Boton de loguin-->
+      <b-col sm="2" align-self="center">
+        <b-button pill variant="outline-secondary" v-on:click="addUser">
+          Google Account
+          <b-badge variant="dark">Get in</b-badge>
+        </b-button>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
@@ -50,18 +62,25 @@ export default {
         message: userMessage
       }
       console.log(currentMessage)
-      firebase.database().ref('uslessMessages').push(currentMessage)
+      firebase
+        .database().ref('uslessMessages').push(currentMessage)
+    },
+    addUser: function () {
+      console.log('logeandose...')
+      let provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(provider).then(() => console.log(firebase.auth()))
     }
   },
   created () {
     console.log('rescatando mensajes')
-    firebase.database().ref('uslessMessages').on('value', (data) => {
-      for (let key in data.val()) {
-        let messages = data.val()[key]
-        messages = JSON.stringify(messages)
-        console.log(messages)
-      }
-    })
+    firebase
+      .database().ref('uslessMessages').on('value', data => {
+        for (let key in data.val()) {
+          let messages = data.val()[key]
+          messages = JSON.stringify(messages)
+          console.log(messages)
+        }
+      })
   }
 }
 </script>
