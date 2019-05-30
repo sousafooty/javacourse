@@ -50,7 +50,8 @@ export default {
   name: 'minichat',
   data () {
     return {
-      text: ''
+      text: '',
+      currentuser: ''
     }
   },
   methods: {
@@ -81,6 +82,16 @@ export default {
           console.log(messages)
         }
       })
+  },
+  computed: {
+    getUser: {
+      set: function getUser () {
+        this.currentuser = firebase.auth().currentUser.displayName
+      },
+      get: function setUser () {
+        return this.currentuser
+      }
+    }
   }
 }
 </script>
