@@ -21,29 +21,53 @@
           size="sm"
           v-model="text"
           :state="text.length >= 10"
-          placeholder="Your question (at least 10 characters)?"
+          placeholder="Your question (at least 10 characters)"
         ></b-form-textarea>
       </b-col>
       <b-col sm="1" align-self="center">
-        <b-button variant="dark">Send</b-button>
+        <b-button variant="dark" v-on:click="sendMessage">Send</b-button>
       </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
   name: 'minichat',
   data () {
     return {
       text: ''
     }
+  },
+  methods: {
+    sendMessage: function () {
+      let userName = firebase.auth().currentUser.displayName
+      let userMessage = this.text
+      let currentMessage = {
+        name: userName,
+        message: userMessage
+      }
+      console.log(currentMessage)
+      firebase.database().ref('uslessMessages').push(currentMessage)
+    }
+  },
+  created () {
+    console.log('rescatando mensajes')
+    firebase.database().ref('uslessMessages').on('value', (data) => {
+      for (let key in data.val()) {
+        let messages = data.val()[key]
+        messages = JSON.stringify(messages)
+        console.log(messages)
+      }
+    })
   }
 }
 </script>
 
 <style scoped>
 .col-sm-5 {
-    margin: 1.5%;
+  margin: 1.5%;
 }
 </style>
