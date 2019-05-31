@@ -2,12 +2,10 @@
   <b-container fluid>
     <b-row align-h="center">
       <b-col sm="8" align-self="center">
-        <b-card class="text-center" title="Chat" sub-title="comunity mini chat">
-          <div class="bg-secondary text-light">
-            <p v-for="(mesage, index) in allMesages" v-bind:key=index>
-              {{ mesage }}
-            </p>
-          </div>
+        <b-card class="text-center" bg-variant="dark" text-variant="white" title="Comunity Chat">
+          <b-card-text v-for="(mesage, index) in allMesages" v-bind:key="index">
+            {{ mesage }}
+          </b-card-text>
         </b-card>
       </b-col>
     </b-row>
