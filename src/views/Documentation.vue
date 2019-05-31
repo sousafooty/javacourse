@@ -51,3 +51,9 @@ export default {
   }
 }
 </script>
+
+<style>
+li {
+  list-style: none;
+}
+</style>
