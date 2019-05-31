@@ -4,11 +4,9 @@
       <b-col sm="8" align-self="center">
         <b-card class="text-center" title="Chat" sub-title="comunity mini chat">
           <div class="bg-secondary text-light">
-            This is some content within the default
-            <samp>&lt;b-card-body&gt;</samp> block of the
-            <samp>&lt;b-card&gt;</samp> component. Notice the padding between the card's border and this
-            gray
-            <samp>&lt;div&gt;</samp>.
+            <p v-for="(mesage, index) in allMesages" v-bind:key=index>
+              {{ mesage }}
+            </p>
           </div>
         </b-card>
       </b-col>
@@ -28,18 +26,6 @@
         <b-button variant="dark" v-on:click="sendMessage">Send</b-button>
       </b-col>
     </b-row>
-    <b-row align-h="center">
-      <b-col sm="2">
-        <span>You have to log in to use the chat</span>
-      </b-col>
-      <!--Boton de loguin-->
-      <b-col sm="2" align-self="center">
-        <b-button pill variant="outline-secondary" v-on:click="addUser">
-          Google Account
-          <b-badge variant="dark">Get in</b-badge>
-        </b-button>
-      </b-col>
-    </b-row>
   </b-container>
 </template>
 
@@ -51,47 +37,36 @@ export default {
   data () {
     return {
       text: '',
-      currentuser: ''
+      currentuser: '',
+      allMesages: []
     }
   },
   methods: {
     sendMessage: function () {
-      let userName = firebase.auth().currentUser.displayName
       let userMessage = this.text
       let currentMessage = {
-        name: userName,
-        message: userMessage
+        message: userMessage,
+        name: 'jose sousa'
       }
-      console.log(currentMessage)
-      firebase
-        .database().ref('uslessMessages').push(currentMessage)
+      firebase.database().ref('uslessMessages').push(currentMessage)
     },
-    addUser: function () {
-      console.log('logeandose...')
-      let provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithPopup(provider).then(() => console.log(firebase.auth()))
-    }
-  },
-  created () {
-    console.log('rescatando mensajes')
-    firebase
-      .database().ref('uslessMessages').on('value', data => {
+    rescueMessages: function () {
+      firebase.database().ref('uslessMessages').on('value', data => {
+        this.allMesages = []
         for (let key in data.val()) {
           let messages = data.val()[key]
           messages = JSON.stringify(messages)
+          messages = messages.replace(/[{}]/g, '')
+          messages = messages.replace(',', ' ')
+          messages = messages.replace(/"/g, '')
+          this.allMesages.push(messages)
           console.log(messages)
         }
       })
-  },
-  computed: {
-    getUser: {
-      set: function getUser () {
-        this.currentuser = firebase.auth().currentUser.displayName
-      },
-      get: function setUser () {
-        return this.currentuser
-      }
     }
+  },
+  created () {
+    this.rescueMessages()
   }
 }
 </script>
