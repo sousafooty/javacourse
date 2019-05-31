@@ -13,17 +13,20 @@
     </b-row>
 
     <b-row align-h="center">
-      <b-col sm="5" align-self="center">
-        <b-form-textarea
-          id="textarea-small"
-          size="sm"
-          v-model="text"
-          :state="text.length >= 10"
-          placeholder="Your question (at least 10 characters)"
-        ></b-form-textarea>
+      <b-col sm="3" align-self="start">
+        <!-- Using props -->
+        <b-input-group size="sm" class="mt-3" prepend="Nickname">
+          <b-form-input v-model="nickname" placeholder="your nickname"></b-form-input>
+        </b-input-group>
       </b-col>
-      <b-col sm="1" align-self="center">
-        <b-button variant="dark" v-on:click="sendMessage">Send</b-button>
+      <b-col sm="4" align-self="center">
+        <!-- Using components -->
+        <b-input-group class="mt-3">
+          <b-form-input v-model="text" placeholder="your message"></b-form-input>
+          <b-input-group-append>
+            <b-button variant="outline-success" v-on:click="sendMessage" v-bind:disabled="text.length < 1 || nickname.length < 1">Send</b-button>
+        </b-input-group-append>
+        </b-input-group>
       </b-col>
     </b-row>
   </b-container>
@@ -37,17 +40,18 @@ export default {
   data () {
     return {
       text: '',
-      currentuser: '',
+      nickname: '',
       allMesages: []
     }
   },
   methods: {
     sendMessage: function () {
-      let userMessage = this.text
       let currentMessage = {
-        message: userMessage,
-        name: 'jose sousa'
+        message: this.text,
+        name: this.nickname
       }
+      this.text = ''
+      this.nickname = ''
       firebase.database().ref('uslessMessages').push(currentMessage)
     },
     rescueMessages: function () {
@@ -70,9 +74,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.col-sm-5 {
-  margin: 1.5%;
-}
-</style>
