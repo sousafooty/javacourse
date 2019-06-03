@@ -4,10 +4,12 @@
       <h1>Learn a new Skill in Java!</h1>
       <h2>{{ subchapter }}</h2>
       <section>
-        <p class="paragraph" v-for="(paragraph, index) in getFindTheSkill" v-bind:key="index">
+        <p class="paragraph" v-for="(paragraph, index) in getFindTheSkill" v-bind:key="index" v-show="index < 10 || readMore">
           {{ paragraph }}
         </p>
       </section>
+      <b-button variant="link" v-on:click="readMoreButton" v-if="!readMore">Read More</b-button>
+      <b-button variant="link" v-on:click="readMoreButton" v-if="readMore">Read Less</b-button>
     </b-container>
   </div>
 </template>
@@ -15,6 +17,16 @@
 <script>
 export default {
   props: ['subchapter'],
+  data () {
+    return {
+      readMore: false
+    }
+  },
+  methods: {
+    readMoreButton: function () {
+      this.readMore = !this.readMore
+    }
+  },
   computed: {
     getJavaCrashCourse () {
       return this.$store.getters.getJavaCrashCourse
