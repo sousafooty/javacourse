@@ -3,7 +3,7 @@
     <b-row align-h="center">
       <b-col sm="8" align-self="center">
         <b-card id="nav-scroller" ref="content" class="text-center" bg-variant="dark" text-variant="white" title="Comunity Chat">
-          <b-card-text v-for="(mesage, index) in allMesages" v-bind:key="index">
+          <b-card-text class="speech-bubble" v-for="(mesage, index) in allMesages" v-bind:key="index">
             {{ mesage }}
           </b-card-text>
         </b-card>
@@ -45,11 +45,11 @@ export default {
   methods: {
     sendMessage: function () {
       let currentMessage = {
-        message: this.text,
-        name: this.nickname
+        Mensaje: this.text,
+        Nickname: this.nickname
       }
       this.text = ''
-      this.nickname = ''
+      // this.nickname = ''
       firebase.database().ref('uslessMessages').push(currentMessage)
     },
     rescueMessages: function () {
@@ -74,9 +74,31 @@ export default {
 </script>
 
 <style>
+
 #nav-scroller {
-  position: relative;
-  height: 300px;
-  overflow-y: scroll;
+position: relative;
+height: 300px;
+overflow-y: scroll;
+}
+
+.speech-bubble {
+position: relative;
+background: #048ab7;
+border-radius: .4em;
+}
+
+.speech-bubble:after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 50%;
+width: 0;
+height: 0;
+border: 13px solid transparent;
+border-top-color: #048ab7;
+border-bottom: 0;
+border-right: 0;
+margin-left: -6.5px;
+margin-bottom: -13px;
 }
 </style>
