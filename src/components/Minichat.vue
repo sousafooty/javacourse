@@ -46,7 +46,7 @@ export default {
     sendMessage: function () {
       let currentMessage = {
         Mensaje: this.text,
-        Nickname: this.nickname
+        Por: this.nickname
       }
       this.text = ''
       // this.nickname = ''
